@@ -28,27 +28,13 @@ The FIA spent three months investigating. They removed the Race Director. They r
 
 ---
 
-## 🚀 Deploy in 60 Seconds
+---
 
-```bash
-# Option 1 — Netlify (drag-and-drop, zero setup)
-# Drag gridlock-ai-v2.html to: https://app.netlify.com/drop
-
-# Option 2 — Vercel CLI
-npx vercel --prod
-
-# Option 3 — GitHub Pages
-git add index.html && git commit -m "GridLock AI v2" && git push
-# Settings → Pages → Deploy from root
-```
+## 🗺️ How The App Works — Complete Flow 
 
 ---
 
-## 🗺️ How The App Works — Complete Flow (Start to End)
-
----
-
-### STEP 1 · Cinematic Intro (First 2.2 seconds)
+### STEP 1 · 
 
 <div align="center">
 
