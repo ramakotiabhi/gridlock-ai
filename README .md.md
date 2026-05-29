@@ -369,24 +369,22 @@ langflow run pipeline/gridlock_langflow.json
 
 ---
 
-## 🎬 Demo Script for Judges
-
-> **Total time: 3 minutes. No preparation needed beyond opening `index.html`.**
+## 🎬 Demo Script (for Judges)
 
 ---
 
-### [0:00 – 0:15] Open and Orient
+###  Open and Orient
 
-Open `index.html`. Point out:
+Open Grilock AI Link. Point out:
 - The **live F1 telemetry** in the hero panel — speed traces updating in real time
 - The **IBM tool chips** in the header (Granite, Docling, Langflow, OpenF1)
 - The **"Demo Mode"** status — confirm this works without any token
 
-**Say:** *"This entire application — all data, all AI, all FIA regulations — is one file. Open it and it works."*
+ *"This entire application — all data, all AI, all FIA regulations — is one file. Open it and it works."*
 
 ---
 
-### [0:15 – 0:45] Select Abu Dhabi 2021
+### Select Abu Dhabi 2021
 
 Click **"Abu Dhabi 2021 — Safety Car Controversy"** in the left sidebar.
 
@@ -394,11 +392,11 @@ Point out the incident header loading:
 - **Red badge:** `CHAMPIONSHIP-DEFINING — 9.8/10`
 - The description mentioning 5 of 8 lapped cars, Art. 48.12, the 0.0s restart gap
 
-**Say:** *"This is the real data. Hamilton on 42-lap mediums. Verstappen on fresh softs. A 0.0 second gap. One lap to go."*
+ *"This is the real data. Hamilton on 42-lap mediums. Verstappen on fresh softs. A 0.0 second gap. One lap to go."*
 
 ---
 
-### [0:45 – 1:15] Steward Brief — IBM Granite Analysis
+###  Steward Brief — IBM Granite Analysis
 
 You are on **Tab 1 (Steward Brief)**. Show:
 1. **Confidence bar animating to 94%**
@@ -406,11 +404,11 @@ You are on **Tab 1 (Steward Brief)**. Show:
 3. **Historical Precedents** — three real comparable cases from the FIA archive
 4. **GridLock AI Verdict** — the formal recommendation at the bottom
 
-**Say:** *"In Demo Mode this is pre-loaded expert analysis. With an IBM Granite token, this regenerates live from the model in about 3 seconds."*
+ *"In Demo Mode this is pre-loaded expert analysis. With an IBM Granite token, this regenerates live from the model in about 3 seconds."*
 
 ---
 
-### [1:15 – 1:35] Three Tabs — Three Audiences
+###  Three Tabs — Three Audiences
 
 Click **Tab 2 (Telemetry)** — show the speed trace chart and the 6 telemetry cells.
 
@@ -418,11 +416,11 @@ Click **Tab 4 (Team Appeal)** — show the appeal strength score (82%) and the e
 
 Click **Tab 6 (Fan View)** — show the plain-language explanation and the real-world analogy.
 
-**Say:** *"Same incident. Three completely different outputs. Stewards, teams, and 500 million fans — all served by one AI pipeline."*
+ *"Same incident. Three completely different outputs. Stewards, teams, and 500 million fans — all served by one AI pipeline."*
 
 ---
 
-### [1:35 – 2:00] Custom Incident Builder
+### Custom Incident Builder
 
 Scroll down to the **Custom Incident Builder** section. Type:
 - Name: `Monza 2025 — T1 Braking Contact`
@@ -433,33 +431,33 @@ Scroll down to the **Custom Incident Builder** section. Type:
 
 Click **"Analyse with IBM Granite + Docling RAG"**.
 
-**Say:** *"Any incident. Any race. IBM Granite retrieves relevant FIA regulations and generates a structured brief. This is the Custom Incident Builder."*
+ *"Any incident. Any race. IBM Granite retrieves relevant FIA regulations and generates a structured brief. This is the Custom Incident Builder."*
 
 ---
 
-### [2:00 – 2:20] Compare Incidents
+###  Compare Incidents
 
 Scroll to **Compare Incidents**. Select:
 - Incident A: `Silverstone 2021 — Copse Collision`
 - Incident B: `Jeddah 2021 — Brake Test`
 
-**Say:** *"Both high-severity driver incidents in the same season. Side by side: Silverstone was a 10-second penalty, Jeddah was two separate penalties. Same tool that stewards can use to verify consistency."*
+ *"Both high-severity driver incidents in the same season. Side by side: Silverstone was a 10-second penalty, Jeddah was two separate penalties. Same tool that stewards can use to verify consistency."*
 
 ---
 
-### [2:20 – 2:45] Architecture
+###  Architecture
 
 Click **"Architecture & Stack"** in the hero, or scroll to the bottom. Show:
 - The **Langflow pipeline diagram** (OpenF1 → Docling → Granite → Router)
 - The **FIA gap table** (what they fixed vs what GridLock AI solves)
 
-**Say:** *"IBM Docling ingests 500 FIA PDFs. IBM Granite reasons over the retrieved text. Langflow orchestrates every step visually. The FIA confirmed this gap after Abu Dhabi 2021. We built the AI layer."*
+ *"IBM Docling ingests 500 FIA PDFs. IBM Granite reasons over the retrieved text. Langflow orchestrates every step visually. The FIA confirmed this gap after Abu Dhabi 2021. We built the AI layer."*
 
 ---
 
-### [2:45 – 3:00] Close
+### Conclusion
 
-**Say:** *"GridLock AI serves FIA stewards, race teams, and 500 million fans. It augments human judgment without replacing it. The FIA removed their Race Director after one bad decision changed a World Championship. GridLock AI makes sure that never happens again."*
+ *"GridLock AI serves FIA stewards, race teams, and 500 million fans. It augments human judgment without replacing it. The FIA removed their Race Director after one bad decision changed a World Championship. GridLock AI makes sure that never happens again."*
 
 ---
 
