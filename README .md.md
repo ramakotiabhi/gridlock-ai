@@ -622,7 +622,8 @@ The core of GridLock AI is built on **real, documented F1 controversies** — no
 > The FIA's own post-Abu Dhabi reforms confirm they recognise the need for systematic, automated support for race control decisions. GridLock AI is the AI layer that extends that automation to the steward decision process itself.
 
 ---
-
+## 📄AI Governance
+"GridLock AI never replaces human stewards. It provides explainable recommendations, evidence traceability, and precedent retrieval while keeping final authority with human decision-makers."
 ---
 
 ## 📄 License
