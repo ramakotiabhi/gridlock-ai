@@ -1,0 +1,125 @@
+{
+  "id": "gridlock-ai-pipeline",
+  "name": "GridLock AI — F1 Incident Intelligence Pipeline",
+  "description": "IBM AI Builders 2026 — Orchestrates OpenF1 telemetry → IBM Docling RAG → IBM Granite reasoning → Multi-audience output",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "openf1_ingest",
+      "type": "CustomComponent",
+      "display_name": "OpenF1 Telemetry Ingest",
+      "description": "Fetches real-time F1 telemetry from OpenF1 API (free, no auth required)",
+      "icon": "📡",
+      "outputs": ["telemetry_json"],
+      "config": {
+        "api_base": "https://api.openf1.org/v1",
+        "endpoints": ["car_data", "position", "intervals", "team_radio"],
+        "session_key": "{{session_key}}",
+        "driver_number": "{{driver_number}}"
+      }
+    },
+    {
+      "id": "feature_extractor",
+      "type": "PythonFunction",
+      "display_name": "Telemetry Feature Extractor",
+      "description": "Computes incident-relevant features: max decel, overlap %, speed delta, braking point",
+      "icon": "⚙️",
+      "inputs": ["telemetry_json"],
+      "outputs": ["features_dict"],
+      "code": "def extract_features(telemetry):\n    return {\n        'max_deceleration_g': compute_max_decel(telemetry),\n        'overlap_pct': compute_overlap(telemetry),\n        'speed_at_contact_kph': telemetry.get('speed', 0),\n        'braking_delta_metres': compute_braking_delta(telemetry)\n    }"
+    },
+    {
+      "id": "docling_rag",
+      "type": "IBMDoclingRAG",
+      "display_name": "IBM Docling RAG Retriever",
+      "description": "Semantic search over 500+ FIA PDFs indexed by IBM Docling + FAISS",
+      "icon": "📚",
+      "ibm_tool": true,
+      "inputs": ["features_dict", "incident_description"],
+      "outputs": ["regulation_passages"],
+      "config": {
+        "index_path": "./gridlock_index",
+        "top_k": 5,
+        "embedding_model": "all-MiniLM-L6-v2",
+        "fallback": "in_memory_knowledge_base",
+        "corpus_size": "500+ FIA PDFs 2010-2026"
+      }
+    },
+    {
+      "id": "granite_reasoner",
+      "type": "IBMGraniteInference",
+      "display_name": "IBM Granite 3.1-8B Reasoner",
+      "description": "Primary AI reasoning engine. Physics-first — explains computed data, never invents it.",
+      "icon": "🧠",
+      "ibm_tool": true,
+      "inputs": ["features_dict", "regulation_passages"],
+      "outputs": ["structured_analysis"],
+      "config": {
+        "model": "ibm-granite/granite-3.1-8b-instruct",
+        "provider": "hf-inference",
+        "temperature": 0.2,
+        "max_tokens": 800,
+        "system_prompt": "You are GridLock AI, an expert FIA steward decision-support assistant. Analyse F1 race incidents using real telemetry data and FIA sporting regulations. Cite specific regulation articles. State confidence level. Human stewards retain final authority."
+      }
+    },
+    {
+      "id": "output_router",
+      "type": "ConditionalRouter",
+      "display_name": "Output Router",
+      "description": "Routes analysis to three audiences: stewards, teams, fans",
+      "icon": "🔀",
+      "inputs": ["structured_analysis"],
+      "outputs": ["steward_output", "team_output", "fan_output"]
+    },
+    {
+      "id": "steward_brief",
+      "type": "TemplateRenderer",
+      "display_name": "Steward Decision Brief",
+      "description": "Structured brief: breach assessment, severity score, precedents, penalty recommendation, audit trail",
+      "icon": "⚖️",
+      "inputs": ["steward_output"],
+      "outputs": ["steward_brief_pdf"]
+    },
+    {
+      "id": "team_appeal",
+      "type": "IBMGraniteInference",
+      "display_name": "Team Appeal Scorer",
+      "description": "Scores appeal strength against historical precedent, generates submission brief",
+      "icon": "🏎️",
+      "ibm_tool": true,
+      "inputs": ["team_output", "team_argument"],
+      "outputs": ["appeal_brief"]
+    },
+    {
+      "id": "fan_explainer",
+      "type": "IBMGraniteInference",
+      "display_name": "Fan Plain-Language Explainer",
+      "description": "Generates accessible explanation for 500M+ F1 fans — no jargon, real clarity",
+      "icon": "📺",
+      "ibm_tool": true,
+      "inputs": ["fan_output"],
+      "outputs": ["fan_explanation"]
+    }
+  ],
+  "edges": [
+    {"source": "openf1_ingest", "target": "feature_extractor"},
+    {"source": "feature_extractor", "target": "docling_rag"},
+    {"source": "feature_extractor", "target": "granite_reasoner"},
+    {"source": "docling_rag", "target": "granite_reasoner"},
+    {"source": "granite_reasoner", "target": "output_router"},
+    {"source": "output_router", "target": "steward_brief"},
+    {"source": "output_router", "target": "team_appeal"},
+    {"source": "output_router", "target": "fan_explainer"}
+  ],
+  "ibm_tools_used": [
+    "IBM Granite 3.1-8B-Instruct (HuggingFace Serverless Inference)",
+    "IBM Docling (PDF ingestion + FAISS indexing)",
+    "Langflow (Visual pipeline orchestration)"
+  ],
+  "data_sources": [
+    "OpenF1 API (free, no auth — api.openf1.org)",
+    "FIA Steward Decisions 2010-2026 (public PDFs — fia.com)",
+    "FIA Sporting Regulations 2021-2026 (public PDFs)",
+    "FIA Driving Standards Guidelines 2025/2026 (public PDFs)"
+  ]
+}

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+*.egg-info/
+
+# FAISS index (large binary - rebuild with docling_setup.py)
+gridlock_index/
+*.faiss
+*.pkl
+
+# FIA PDFs (public domain - download via docling_setup.py)
+fia_decisions/
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
