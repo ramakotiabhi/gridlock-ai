@@ -33,7 +33,8 @@
 ---
 
 ## 📋 Table of Contents
-
+a. [Live Demo](#-Live-Demo)
+b.[IBM Granite - Live AI Demo for Judges](#-IBM-Granite-Live-AI-Demo-for-Judges).
 1. [The Problem](#-the-problem)
 2. [The Solution](#-the-solution)
 3. [Unique Features](#-unique-features)
@@ -48,7 +49,38 @@
 
 ---
 
-## 🚨 The Problem
+## Live Demo
+
+**[gridlock-ai-eta.vercel.app](https://gridlock-ai-eta.vercel.app)**
+
+No setup needed. Open the link and the app runs instantly in your browser.
+
+## Youtube Video
+
+**[gridlock ai Youtube Video](https://www.youtube.com/watch?v=uuueu8-PI8k)**
+
+If the video is blocked, please use the alternative video option below.
+
+**[gridlock-ai-eta.vercel.app](https://drive.google.com/file/d/1s1OXgclbNVWXThOMomM21bYbCkRpHdwk/view?usp=sharing)**
+
+
+---
+## IBM Granite - Live AI Demo for Judges
+
+To activate live IBM Granite 3.1-8B-Instruct analysis:
+
+1. Open the live demo at [gridlock-ai-eta.vercel.app](https://gridlock-ai-eta.vercel.app)
+2. Get a **free** HuggingFace token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) (Read permission, takes 2 minutes)
+3. Paste your `hf_...` token into the header field
+4. Click **Connect Granite**
+5. Status badge switches from `Demo Mode` to `Live`
+6. Select any incident - IBM Granite analyses it in real time via IBM Docling RAG
+
+> Without a token the app runs in Demo Mode with pre-curated expert analysis for all 9 incidents. Every feature works - only the live Granite API calls use curated responses instead.
+
+---
+
+## 🚨 The Problem - A Real F1 Crisis
 
 ### F1 stewards make World Championship-defining decisions in under 4 minutes — with zero AI support.
 
@@ -121,6 +153,12 @@ One-click text export of the complete steward brief — incident description, te
 The entire application — all data, all IBM integration, all FIA regulation knowledge — is contained in a **single `index.html` file**. Open it. It runs. No installation. No server. No build step.
 
 ---
+
+### Additional Features
+- **2026 F1 Calendar** - Full season schedule with circuit info
+- **Driver DNA** - 2026 driver profiles and stats
+- **Penalty Simulator** - Interactive sliders for overlap, G-force, braking delta with IBM Granite prediction
+- **Championship Standings** - 2026 WDC and WCC live tables
 
 ## 🔄 App Flow — How It Works (For Judges)
 
@@ -584,14 +622,6 @@ The core of GridLock AI is built on **real, documented F1 controversies** — no
 > The FIA's own post-Abu Dhabi reforms confirm they recognise the need for systematic, automated support for race control decisions. GridLock AI is the AI layer that extends that automation to the steward decision process itself.
 
 ---
-
-## 👥 Submission Details
-
-- **Challenge:** IBM AI Builders 2026 — May Innovation Challenge
-- **Theme:** Car Racing & AI
-- **IBM Tools Used:** IBM Granite 3.1-8B-Instruct · IBM Docling · Langflow
-- **Supporting Tools:** OpenF1 API · FastF1 · FAISS · sentence-transformers · FastAPI
-- **Submission deadline:** May 31, 2026 at 11:59pm ET
 
 ---
 
